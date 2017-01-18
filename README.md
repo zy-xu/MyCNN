@@ -30,43 +30,42 @@ layers: layers of the cnn (* is required)
       *softmax                    if 1, implement softmax in output
                                   layer, output layer ('o') only
 --------------------------------------------------------------------
-The input layer, output layer, and at least one convolutional and 
-subsampling layer are required. In each layer, you can specify a
-activation function, or use sigmoid in default.
+The input layer, output layer, and at least one convolutional and  subsampling layer are required. In each layer, you can specify an activation function, or use sigmoid in default.
 
 For example
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 cnn.layers = {
-    struct('type', 'i')
-    struct('type', 'cs', 'filterDim', 5, 'numFilters', 6, 'poolDim', 2)
-    struct('type', 'o', 'softmax', 0)
+     struct('type', 'i')
+     struct('type', 'cs', 'filterDim', 5, 'numFilters', 6, 'poolDim', 2)
+     struct('type', 'o', 'softmax', 0)
 };
 
 cnn.layers = {
-    struct('type', 'i') %input layer
-    struct('type', 'cs', 'filterDim', 5, 'numFilters', 6, 'poolDim', 2, ...
-        'activationFunction','relu')
-    struct('type', 'fc', 'hiddenUnits', 50, 'activationFunction', 'tanh')
-    struct('type', 'o', 'softmax', 1)
+     struct('type', 'i') %input layer
+     struct('type', 'cs', 'filterDim', 5, 'numFilters', 6, 'poolDim', 2, ...
+          'activationFunction','relu')
+     struct('type', 'fc', 'hiddenUnits', 50, 'activationFunction', 'tanh')
+     struct('type', 'o', 'softmax', 1)
 };
 
 cnn.layers = {
-    struct('type', 'i')
-    struct('type', 'cs', 'filterDim', 5, 'numFilters', 6, 'poolDim', 2, ...
-        'activationFunction','relu')
-    struct('type', 'cs', 'filterDim', 3, 'numFilters', 12,'poolDim', 2, ...
-        'activationFunction','relu')
-    struct('type', 'fc', 'hiddenUnits', 500, 'activationFunction')
-    struct('type', 'fc', 'hiddenUnits', 300, 'activationFunction', 'tanh')
-    struct('type', 'o', 'softmax', 1)
+     struct('type', 'i')
+     struct('type', 'cs', 'filterDim', 5, 'numFilters', 6, 'poolDim', 2, ...
+            'activationFunction','relu')
+     struct('type', 'cs', 'filterDim', 3, 'numFilters', 12,'poolDim', 2, ...
+          'activationFunction','relu')
+     struct('type', 'fc', 'hiddenUnits', 500, 'activationFunction')
+     struct('type', 'fc', 'hiddenUnits', 300, 'activationFunction', 'tanh')
+     struct('type', 'o', 'softmax', 1)
 };
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 are all valid definations.
 
-Then, load your training data and specify parameter for SGD, and call
-myCnnTrain to train this cnn.
+Then, load your training data and specify parameter for SGD, and call myCnnTrain to train this cnn.
 
-Finally, load your test data and call myCnnPredict to predict
+Finally, load your test data and call myCnnPredict to predict.
 
 A demo is provided in main.m.
 
