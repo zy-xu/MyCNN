@@ -2,7 +2,8 @@ Welcome to MyCNN by Xu Zhiya. zy-xu16@mails.tsinghua.edu.cn
 To start, define a cnn by yourself!
 --------------------------------------------------------------------
 cnn structure
-  layers: layers of the cnn (* is required)
+layers: layers of the cnn (* is required)
+
       *type:                      type of the layer, could be input layer ('i'), convolutional 
                                   and subsampling layer ('cs'), full connected layer ('fc'), 
                                   and output layer ('o').
@@ -32,7 +33,9 @@ cnn structure
 The input layer, output layer, and at least one convolutional and 
 subsampling layer are required. In each layer, you can specify a
 activation function, or use sigmoid in default.
+
 For example
+
 cnn.layers = {
     struct('type', 'i')
     struct('type', 'cs', 'filterDim', 5, 'numFilters', 6, 'poolDim', 2)
@@ -59,6 +62,7 @@ cnn.layers = {
 };
 
 are all valid definations.
+
 Then, load your training data and specify parameter for SGD, and call
 myCnnTrain to train this cnn.
 
