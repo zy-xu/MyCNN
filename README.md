@@ -1,5 +1,4 @@
-Welcome to MyCNN by Xu Zhiya
-zy-xu16@mails.tsinghua.edu.cn
+Welcome to MyCNN by Xu Zhiya. zy-xu16@mails.tsinghua.edu.cn
 To start, define a cnn by yourself!
 --------------------------------------------------------------------
 cnn structure
