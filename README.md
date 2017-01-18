@@ -64,5 +64,7 @@ myCnnTrain to train this cnn.
 
 Finally, load your test data and call myCnnPredict to predict
 
+A demo is provided in main.m.
+
 Enjoy your time with MyCNN by Xu Zhiya.
 zy-xu16@mails.tsinghua.edu.cn
