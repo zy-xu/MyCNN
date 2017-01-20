@@ -81,6 +81,7 @@ cnn.layers = {
         'activationFunction','relu') %convolution layer  
     struct('type', 'cs', 'filterDim', 3, 'numFilters', 12,'poolDim', 2, ...
         'activationFunction','relu') %convolution layer
+    struct('type', 'fc', 'hiddenUnits', 400, 'activationFunction', 'tanh')
     struct('type', 'fc', 'hiddenUnits', 200, 'activationFunction', 'tanh')
     struct('type', 'o', 'softmax', 1)
 };
@@ -97,7 +98,7 @@ labels(labels==0) = 10; % Remap 0 to 10
 options.epochs = 3;
 options.minibatch = 256;
 options.alpha = 0.1;
-options.momentum = .95;
+options.momentum = 0.95;
 
 cnn = myCnnTrain(cnn,images,labels,options);
 
@@ -106,6 +107,7 @@ testLabels = loadMNISTLabels('t10k-labels-idx1-ubyte');
 testImages = reshape(testImages,imageDim,imageDim,1,[]);
 testLabels(testLabels==0) = 10; % Remap 0 to 10
 
+% Accuracy should be around 98% after 3 epochs
 preds = myCnnPredict(cnn,testImages);
 acc = sum(preds==testLabels)/length(preds);
 fprintf('Accuracy is %f\n',acc);
