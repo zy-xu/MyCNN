@@ -79,7 +79,7 @@ cnn.layers = {
     struct('type', 'i') %input layer
     struct('type', 'cs', 'filterDim', 5, 'numFilters', 6, 'poolDim', 2, ...
         'activationFunction','relu') %convolution layer  
-    struct('type', 'cs', 'filterDim', 3, 'numFilters', 12,'poolDim', 2, ...
+    struct('type', 'cs', 'filterDim', 3, 'numFilters', 15,'poolDim', 2, ...
         'activationFunction','relu') %convolution layer
     struct('type', 'fc', 'hiddenUnits', 400, 'activationFunction', 'tanh')
     struct('type', 'fc', 'hiddenUnits', 200, 'activationFunction', 'tanh')
@@ -95,7 +95,7 @@ labels = loadMNISTLabels('train-labels-idx1-ubyte');
 labels(labels==0) = 10; % Remap 0 to 10
 
 % options for SGD
-options.epochs = 3;
+options.epochs = 5;
 options.minibatch = 256;
 options.alpha = 0.1;
 options.momentum = 0.95;
@@ -107,7 +107,7 @@ testLabels = loadMNISTLabels('t10k-labels-idx1-ubyte');
 testImages = reshape(testImages,imageDim,imageDim,1,[]);
 testLabels(testLabels==0) = 10; % Remap 0 to 10
 
-% Accuracy should be around 98% after 3 epochs
+% Accuracy should be around 99% after 5 epochs
 preds = myCnnPredict(cnn,testImages);
 acc = sum(preds==testLabels)/length(preds);
 fprintf('Accuracy is %f\n',acc);
